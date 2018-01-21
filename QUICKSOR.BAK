@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<conio.h>
+int partition(int a[],int left,int right)
+{
+int i,j,x,t;
+i = left;
+j = right;
+x = a[left];
+while(i<j)
+{
+while(i<=right&&a[i]<=x)
+i++;
+while(a[j]>x)
+j--;
+if(i<j)
+{
+t = a[i];
+a[i]=a[j];
+a[j]=t;
+}
+}//end while
+//swap a[j] and a[left]
+t=a[j];
+a[j]=a[left];
+a[left]=t;
+}//end of partition
+void quicksort(int a[],int left,int right)
+{
+int p;
+if(left < right)
+{
+p=partition(a,left,right);
+quicksort(a,left,p-1);
+quicksort(a,p+1,right);
+}
+}
+void main()
+{
+int a[100], n ,i;
+clrscr();
+printf("Enter number of elements");
+scanf("%d",&n);
+for(i=0;i<=n-1;i++)
+{
+printf("enter the elements %d",(i+1));
+scanf("%d",&a[i]);
+}
+quicksort(a,0,n-1);
+//print the sorted array
+for(i=0;i<=n-1;i++)
+printf("%d",a[i]);
+getch();
+}
