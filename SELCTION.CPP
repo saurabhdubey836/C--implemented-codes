@@ -1,49 +1,52 @@
-//Implementation of insertion sort
+//Implementation of selection sort Algorithm
 #include<stdio.h>
 #include<conio.h>
-void insertionsort(int a[],int n)
+void selectionsort(int a[],int n)
 {
-int x;
-int i,j;
-for(i=1;i<=n-1;i++)
+int min,p,t,i,j;
+for(i=0;i<=n-2;i++)
 {
-x=a[i];
-j=i;
-while(j>0 && a[j-1]> x)
+min=a[i];
+p=i;
+for(j=i+1;j<=n-1;j++)
 {
-	a[j]=a[j-1];
-	j=j-1;
+if(a[j]<min)
+{
+min=a[j];
+p=j;
 }
-a[j]=x;
+t=a[i];
+a[i]=a[p];
+a[p]=t;
+}
 }
 }
 void main()
 {
-int a[100],i,n;
+int a[100];
+int n,i;
 clrscr();
-printf("Enter no of elements");
+printf("Enter the number of elements: ");
 scanf("%d",&n);
-for(i=0;i<=n-1;i++)
+for(i=0;i<n;i++)
 {
-	printf("Enter element %d: ",(i+1));
-	scanf("%d",&a[i]);
+printf("Enter elements %d ",(i+1));
+scanf("%d",&a[i]);
 }
-insertionsort(a,n);
-printf("\nSorted elements are");
-for(i=0;i<=n-1;i++)
+selectionsort(a,n);
+for(i=0;i<n;i++)
 printf("%d\n",a[i]);
 getch();
 }
 //**********************output*********************
-Enter no of elements 5
-Enter element 1: 100
-Enter element 2: 90
-Enter element 3: 80
-Enter element 4: 70
-Enter element 5: 60
-
-Sorted elements are60
-70
+Enter the number of elements: 5
+Enter elements 1 100                                                            
+Enter elements 2 90                                                             
+Enter elements 3 80                                                             
+Enter elements 4 70                                                             
+Enter elements 5 60
+60                                                                              
+70                                                                              
 80                                                                              
 90                                                                              
 100                                                                             
@@ -60,9 +63,4 @@ Sorted elements are60
                                                                                 
                                                                                 
                                                                                 
-
-
-
-
-
-
+                                                                                
